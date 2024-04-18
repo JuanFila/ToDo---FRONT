@@ -1,0 +1,43 @@
+.wrapper {
+  width: 100%;
+  background: var(--gray-500);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 12px;
+}
+
+/* demarcado */
+.checkBox {
+  appearance: none; 
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--blue-400);
+  background-color: transparent; 
+  border-radius: 50%; 
+  cursor: pointer; 
+}
+
+/* marcado */
+.checkBox:checked {
+  background-color: var(--purple-400);
+  border-color: var(--purple-400);
+}
+.checkBox:checked + p {
+  text-decoration: line-through;
+  color: var(--gray-300);
+}
+
+.wrapper button {
+  background-color: transparent;
+  border: 0;
+}
+.wrapper p {
+  font-size: 14px;
+  color: var(--white);
+}
+
+.Icon {
+  color: var(--gray-300)
+}

@@ -1,0 +1,24 @@
+.Wrapper {
+  width: 100%;
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Wrapper img {
+  width: 3.5rem;
+  
+  margin-top: 4rem;
+}
+
+.Wrapper span {
+  margin-top: 1rem;
+  font-weight:bold ;
+  color: var(--gray-300);
+}
+.Wrapper p {
+  color: var(--gray-300);
+}

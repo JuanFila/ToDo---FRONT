@@ -1,13 +1,29 @@
-import { Trash } from '@phosphor-icons/react';
-import style from './task.module.css';
+import { Check, Trash } from "@phosphor-icons/react";
+import style from "./task.module.css";
 
+interface PropsTask {
+  text: string
+  concluded?:  boolean
+}
 
-export function Task() {
-  return(
+export function Task({text, concluded}:PropsTask) {
+  return (
     <div className={style.wrapper}>
-      <input type="checkbox" className={style.checkBox}/>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, aliquam.</p>
-      <button><Trash className={style.Icon}/></button>
+      <div className={style.check}>
+        <input
+          type="checkbox" id="minhaCaixaDeSelecao" className={style.checkBox}/>
+        <label htmlFor="minhaCaixaDeSelecao">
+          <span>
+            <Check size={12} weight="bold" display={"none"} className={style.IconCheck} />
+          </span>
+        </label>
+      </div>
+      <p className={style.t}>
+      {text}
+      </p>
+      <button>
+        <Trash className={style.Icon} />
+      </button>
     </div>
-  )
+  );
 }

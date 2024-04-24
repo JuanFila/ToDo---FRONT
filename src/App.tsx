@@ -1,39 +1,24 @@
 import { Header } from "./Component/Header/Header";
-import { Create } from "./Component/Post/Post";
+import { Create, TaskItem } from "./Component/Post/Post";
 import "./styles/global.css";
 import style from "./App.module.css";
 import { useState } from "react";
 import { NoTask } from "./Component/CardNoTasks/NoTask";
 import { Task } from "./Component/Tasks/Task";
 
-const tasks = [
-  {
-    id: 1,
-    task: {
-      text: "Testando atividade, feita como desafio da rocket",
-      concluded: false,
-    },
-  },
-  {
-    id: 2,
-    task: {
-      text: "Testando atividade, Ft",
-      concluded: true,
-    },
-  },
-];
-
 export function App() {
   const [tasksCount, setTaskCount] = useState(0);
+  
+  const [tasks, setTasks] = useState<TaskItem[]>([]);
+
+  function addTasks(newTask: TaskItem) {
+    setTasks([...tasks, newTask])
+  }
 
   function viewHome() {
     if (tasks.length > 0) {
-      return tasks.map(task => (
-        <Task
-          key={task.id}
-          text={task.task.text}
-          concluded={task.task.concluded}
-        />
+      return tasks.map((task) => (
+        <Task key={task.id} text={task.text} concluded={task.concluded} />
       ));
     } else {
       return <NoTask />;
@@ -44,7 +29,9 @@ export function App() {
     <div>
       <Header />
       <div className={style.wrapper}>
-        <Create />
+        <Create 
+        addTesk={addTasks}
+        />
         <main>
           <div className={style.Header}>
             <div>

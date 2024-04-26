@@ -8,17 +8,26 @@ import { Task } from "./Component/Tasks/Task";
 
 export function App() {
   const [tasksCount, setTaskCount] = useState(0);
+  const [tasksFinish, setTasksFinish] = useState(0);
+  const [tasksOpen, setTaskOpen] = useState(0);
   
   const [tasks, setTasks] = useState<TaskItem[]>([]);
 
   function addTasks(newTask: TaskItem) {
     setTasks([...tasks, newTask])
+    setTaskCount(tasks.length + 1)
+  }
+
+  function removeTask(index:number) {
+    const removeItem = [...tasks]
+    removeItem.slice(index, 1)
+    setTasks(removeItem)
   }
 
   function viewHome() {
     if (tasks.length > 0) {
       return tasks.map((task) => (
-        <Task key={task.id} text={task.text} concluded={task.concluded} />
+        <Task key={task.id}  text={task.text} concluded={task.concluded} removeTask={removeTask} />
       ));
     } else {
       return <NoTask />;
@@ -40,7 +49,7 @@ export function App() {
             </div>
             <div>
               <span className={style.completed}>Concluídas</span>
-              <p className={style.count}>{tasksCount}</p>
+              <p className={style.count}>{`${tasksOpen} de ${tasksFinish}`}</p>
             </div>
           </div>
           <div className={style.Post}>{viewHome()}</div>

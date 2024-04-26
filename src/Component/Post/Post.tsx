@@ -14,6 +14,7 @@ interface CreateProps {
 
 export function Create({ addTesk }: CreateProps) {
   const [text, setText] = useState("");
+  const [conclued, setConclued] = useState(false)
 
   function getValue(event: ChangeEvent<HTMLInputElement>) {
     setText(event.target.value);
@@ -24,11 +25,16 @@ export function Create({ addTesk }: CreateProps) {
     const newTask: TaskItem = {
       id: Math.random(),
       text: text,
-      concluded: false,
+      concluded: conclued,
     };
-    addTesk(newTask)
-    setText("")
+    if(text.length > 1) {
+      addTesk(newTask)
+      setText("")
+    }else {
+      alert("Preencha o campo de texto")
+    }
   }
+
   return (
     <div>
       <form onSubmit={create} className={style.postForm}>
@@ -37,6 +43,7 @@ export function Create({ addTesk }: CreateProps) {
           placeholder="Adicione uma tarefa"
           className={style.Input}
           onChange={getValue}
+          value={text}
         />
         <button type="submit">
           Criar <PlusCircle size={20} weight="bold" />{" "}

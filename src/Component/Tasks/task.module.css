@@ -27,6 +27,8 @@
   cursor: pointer;
 }
 
+
+
 /* DIV QUE ENVOLVE O INPUT COM O LABEL*/
 .check {
   position: relative;
@@ -52,14 +54,15 @@
   opacity: 0.8;
 }
 
-/*
-alterar a cor do texto e sublinhar corrigir
- .checkBox:checked {
+.text{
+  
+  color: var(--white);
+}
+
+ .through {
   text-decoration: line-through;
   color: var(--gray-300);
 }
-}
-*/
 /*aparecer o ícone com true*/
 .checkBox:checked+label .IconCheck {
   display: inline;
@@ -74,7 +77,6 @@ alterar a cor do texto e sublinhar corrigir
 
 .wrapper p {
   font-size: 14px;
-  color: var(--white);
   text-align: justify;
 }
 
